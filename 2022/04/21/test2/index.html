@@ -4,10 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Lafiteee拉菲的博客">
-    <meta name="description" content="【位运算】剑指offer 56. 数组中数字出现的次数这是一系列位运算的题目，先从最简单的问题开始：
-问题1：
-一个数组中只有一个数字出现过1次，其余数字都出现过两次，请找到那个只出现1次的数字。要求时间复杂度是 $O(n)$，空间复杂度是">
+    <meta name="keywords" content="test2, Lafiteee拉菲的博客">
+    <meta name="description" content="剑指 Offer 41. 数据流中的中位数将数据分为两半，较小的一半用大顶堆存放，较大的一半用小顶堆存放。当前数据总数为 $cnt$ ，这样当一个新的数据 $num$ 进来时，考虑下面两种情况：
+
+$ cnt\ %\ 2 &amp;#x3D;&amp;#x">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +21,7 @@
 
     
 
-    <title>Lafiteee拉菲的博客</title>
+    <title>test2 | Lafiteee拉菲的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -316,7 +316,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title"></h1>
+                    <h1 class="description center-align post-title">test2</h1>
                 </div>
             </div>
         </div>
@@ -453,14 +453,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    865
+                    484
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    1 分
                 </div>
                 
 
@@ -483,80 +483,52 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="【位运算】剑指offer-56-数组中数字出现的次数"><a href="#【位运算】剑指offer-56-数组中数字出现的次数" class="headerlink" title="【位运算】剑指offer 56. 数组中数字出现的次数"></a>【位运算】剑指offer 56. 数组中数字出现的次数</h2><p>这是一系列位运算的题目，先从最简单的问题开始：</p>
-<h3 id="问题1："><a href="#问题1：" class="headerlink" title="问题1："></a>问题1：</h3><blockquote>
-<p>一个数组中只有一个数字出现过1次，其余数字都出现过两次，请找到那个只出现1次的数字。要求时间复杂度是 $O(n)$，空间复杂度是 $O(1)$。</p>
-</blockquote>
-<h4 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h4><p>考虑到位运算中的异或运算，一个数字和它自己做异或，结果为0。所以只需要遍历整个数组，挨个异或，最后得到的结果就是那个只出现1次的数字。</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-<span class="token keyword">public</span><span class="token operator">:</span>
-    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">singleNumbers</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> num <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            res <span class="token operator">^=</span> num<span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="问题2："><a href="#问题2：" class="headerlink" title="问题2："></a>问题2：</h3><blockquote>
-<p>一个整型数组 <code>nums</code> 里除两个数字之外，其他数字都出现了两次。请写程序找出这两个只出现一次的数字。要求时间复杂度是 $O(n)$，空间复杂度是 $O(1)$。</p>
-</blockquote>
-<h4 id="解法：-1"><a href="#解法：-1" class="headerlink" title="解法："></a>解法：</h4><p>与问题 1 的区别在于，这个问题中有两个出现次数为 1 的数字。可以将数组分成两个子数组，每个子数组中各含一个只出现 1 次的数字。具体做法为：</p>
+                <p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shu-ju-liu-zhong-de-zhong-wei-shu-lcof/">剑指 Offer 41. 数据流中的中位数</a><br><img src="https://gitee.com/fduwangjian/imagebed/raw/master/images/2022/202204211723629.png" alt="在这里插入图片描述"><br>将数据分为两半，较小的一半用大顶堆存放，较大的一半用小顶堆存放。当前数据总数为 $cnt$ ，这样当一个新的数据 $num$ 进来时，考虑下面两种情况：</p>
 <ul>
-<li>对所有数字求异或，得到的结果即为 <code>res</code></li>
-<li>保留 <code>res</code> 中的一个为 1 的数位，其余数位都变成 0，可以用 <code>res &amp; -res</code> 保留最低位的 1，记为 <code>div</code></li>
-<li>将数组中的每个数字和 <code>div</code> 做异或，按照结果为0或1分成2组，这样相同的数字都会被分到同一组，而那两个只出现 1 次的数字会被分到不同的组</li>
-<li>按组再做异或，同问题1，得到答案。</li>
-</ul>
-<p>实际操作中不需要真正分组，只需要用两个变量 <code>a</code> 和 <code>b</code> 记录两个组的异或值即可。</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
-<span class="token keyword">public</span><span class="token operator">:</span>
-    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">singleNumbers</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> num <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            res <span class="token operator">^=</span> num<span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> b <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> div <span class="token operator">=</span> res <span class="token operator">&amp;</span> <span class="token operator">-</span>res<span class="token punctuation">;</span>   
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> num <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>div <span class="token operator">&amp;</span> num<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>    
-                a <span class="token operator">^=</span> num<span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-                b <span class="token operator">^=</span> num<span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>a<span class="token punctuation">,</span> b<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="问题3："><a href="#问题3：" class="headerlink" title="问题3："></a>问题3：</h3><blockquote>
-<p>在一个数组 <code>nums</code> 中除一个数字只出现一次之外，其他数字都出现了三次。请找出那个只出现一次的数字。</p>
+<li><p>$ cnt\ %\ 2 &#x3D;&#x3D; 0$ ：先将 $num$ 压入小顶堆，然后将小顶堆堆顶元素压入大顶堆，最后 $pop$ 掉小顶堆堆顶元素；</p>
+<blockquote>
+<p>这种情况时，两个堆内的元素数量相同，那么加入新元素后，前半段数据会比后半段数据多1个，先将新元素和后半段元素比较，然后将后半段元素中最小的放到前半段来。</p>
 </blockquote>
-<h4 id="解法：-2"><a href="#解法：-2" class="headerlink" title="解法："></a>解法：</h4><p>参考：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-ii-lcof/solution/mian-shi-ti-56-ii-shu-zu-zhong-shu-zi-chu-xian-d-4/">K神的题解</a> </p>
-<p>如下图所示，考虑数字的二进制形式，对于出现三次的数字，各二进制位 出现的次数都是 3 的倍数。因此，统计所有数字的各二进制位中 1 的出现次数，并对 3 求余，结果则为只出现一次的数字。</p>
-<p><img src="https://gitee.com/fduwangjian/imagebed/raw/master/images/2022/202204211504568.png" alt="image-20220412105437083"></p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+</li>
+<li><p>$ cnt\ %\ 2 &#x3D;&#x3D; 1$ ：先将 $num$ 压入大顶堆，然后将大顶堆堆顶元素压入小顶堆，最后 $pop$ 掉大顶堆堆顶元素；</p>
+<blockquote>
+<p>这种情况时，前半段数据数量比后半段多1，那么加入新元素后，两段数据数量应该相同，也就是需要往后半段添加元素。先将新元素和前半段元素比较，然后将前半段元素中最大的放到后半段来。</p>
+</blockquote>
+</li>
+</ul>
+<p>经过上面的压入操作，保证了两个堆顶元素就是处在中间位置的元素，如果当前总数为奇数个，中位数即为大顶堆的堆顶元素，如果当前总数为偶数个，中位数即为两个堆顶元素的平均数。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">MedianFinder</span> <span class="token punctuation">&#123;</span>
+    priority_queue<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">,</span> less<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> bigger<span class="token punctuation">;</span> <span class="token comment">// 大顶堆</span>
+    priority_queue<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">,</span> greater<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> lesser<span class="token punctuation">;</span> <span class="token comment">// 小顶堆</span>
+    <span class="token keyword">int</span> cnt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>	<span class="token comment">// 数据总量</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
-    <span class="token keyword">int</span> <span class="token function">singleNumber</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">digit</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">)</span><span class="token punctuation">;</span>	<span class="token comment">// 记录所有数字每个数位上1出现的次数之和</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> num <span class="token operator">:</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>	<span class="token comment">// 遍历每个数字</span>
-            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">32</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>	<span class="token comment">// 遍历每个数位</span>
-                digit<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+=</span> num <span class="token operator">&amp;</span> <span class="token number">1</span><span class="token punctuation">;</span>	<span class="token comment">// num &amp; 1 得到该数位是否为1</span>
-                num <span class="token operator">>>=</span> <span class="token number">1</span><span class="token punctuation">;</span>	<span class="token comment">// 获得下一个数位</span>
-            <span class="token punctuation">&#125;</span>
+    <span class="token comment">/** initialize your data structure here. */</span>
+    <span class="token function">MedianFinder</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+    
+    <span class="token keyword">void</span> <span class="token function">addNum</span><span class="token punctuation">(</span><span class="token keyword">int</span> num<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>cnt <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            lesser<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            bigger<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>lesser<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            lesser<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            bigger<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            lesser<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>bigger<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            bigger<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
-        <span class="token keyword">int</span> ans <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> m <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">31</span><span class="token punctuation">;</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>	
-            <span class="token comment">//倒着遍历digigt数组，因为高数位在大下标位置</span>
-            ans <span class="token operator">&lt;&lt;=</span> <span class="token number">1</span><span class="token punctuation">;</span>	<span class="token comment">// ans左移1位</span>
-            ans <span class="token operator">|=</span> digit<span class="token punctuation">[</span><span class="token number">31</span> <span class="token operator">-</span> i<span class="token punctuation">]</span> <span class="token operator">%</span> m<span class="token punctuation">;</span>	<span class="token comment">// 每个数位对m取余后再和ans做或运算</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+        cnt<span class="token operator">++</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    
+    <span class="token keyword">double</span> <span class="token function">findMedian</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">double</span> ret <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>cnt <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            ret <span class="token operator">=</span> bigger<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            ret <span class="token operator">=</span> <span class="token punctuation">(</span>bigger<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> lesser<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2.0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> ret<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>上面的代码只需要修改求余数值 $m$ ，即可实现解决<strong>除了一个数字之外，其余数字都出现 $m$ 次</strong>的通用问题。</p>
 
                 
             </div>
@@ -583,7 +555,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://lafiteee.github.io/2022/04/21/test-article/">http://lafiteee.github.io/2022/04/21/test-article/</a>
+                    <a href="http://lafiteee.github.io/2022/04/21/test2/">http://lafiteee.github.io/2022/04/21/test2/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -666,9 +638,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/04/21/test2/">
                     <div class="card-image">
@@ -686,9 +659,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -697,6 +670,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -707,13 +681,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/04/21/hello-world/">
+                <a href="/2022/04/21/test-article/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
