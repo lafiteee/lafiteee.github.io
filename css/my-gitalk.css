@@ -221,7 +221,7 @@ pre[class*="language-"] {
     margin-left: -1.3rem;
     margin-right: 0.4rem;
     margin-top: -1px;
-    vertical-align: middle;
+    vertical-align: left;
     left: unset;
     visibility: visible;
 }
