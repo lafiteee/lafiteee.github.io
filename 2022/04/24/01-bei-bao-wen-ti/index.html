@@ -4,12 +4,12 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="test2, Lafiteee拉菲的博客">
-    <meta name="description" content="
-
-剑指 Offer 41. 数据流中的中位数将数据分为两半，较小的一半用大顶堆存放，较大的一半用小顶堆存放。当前数据总数为 $cnt$ ，这样当一个新的数据 $num$ 进来时，考虑下面两种情况：
-
-$ cnt\ %\ 2 &amp;#x3D;&amp;">
+    <meta name="keywords" content="01背包问题, Lafiteee拉菲的博客">
+    <meta name="description" content="1049. 最后一块石头的重量 II
+乍看毫无思路，但仔细想想，这就是相当于把石头分成两堆，两堆相互碰撞，最后剩下的重量最小。那么就可以转化为01背包问题。
+class Solution &amp;#123;
+public:
+    int las">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +23,7 @@ $ cnt\ %\ 2 &amp;#x3D;&amp;">
 
     
 
-    <title>test2 | Lafiteee拉菲的博客</title>
+    <title>01背包问题 | Lafiteee拉菲的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -313,12 +313,12 @@ $ cnt\ %\ 2 &amp;#x3D;&amp;">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">test2</h1>
+                    <h1 class="description center-align post-title">01背包问题</h1>
                 </div>
             </div>
         </div>
@@ -454,12 +454,25 @@ MathJax.Hub.Queue(function() {
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-dp/">
+                                <span class="chip bg-color">动态规划, dp</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-category">
+                                数据结构与算法
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -468,7 +481,7 @@ MathJax.Hub.Queue(function() {
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-04-21
+                    2022-04-24
                 </div>
                 
 
@@ -477,7 +490,7 @@ MathJax.Hub.Queue(function() {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    484
+                    178
                 </div>
                 
 
@@ -507,53 +520,23 @@ MathJax.Hub.Queue(function() {
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <meta name="referrer" content="no-referrer" />
-
-<p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shu-ju-liu-zhong-de-zhong-wei-shu-lcof/">剑指 Offer 41. 数据流中的中位数</a><br><img src="https://gitee.com/fduwangjian/imagebed/raw/master/images/2022/202204211723629.png" alt="在这里插入图片描述"><br>将数据分为两半，较小的一半用大顶堆存放，较大的一半用小顶堆存放。当前数据总数为 $cnt$ ，这样当一个新的数据 $num$ 进来时，考虑下面两种情况：</p>
-<ul>
-<li><p>$ cnt\ %\ 2 &#x3D;&#x3D; 0$ ：先将 $num$ 压入小顶堆，然后将小顶堆堆顶元素压入大顶堆，最后 $pop$ 掉小顶堆堆顶元素；</p>
-<blockquote>
-<p>这种情况时，两个堆内的元素数量相同，那么加入新元素后，前半段数据会比后半段数据多1个，先将新元素和后半段元素比较，然后将后半段元素中最小的放到前半段来。</p>
-</blockquote>
-</li>
-<li><p>$ cnt\ %\ 2 &#x3D;&#x3D; 1$ ：先将 $num$ 压入大顶堆，然后将大顶堆堆顶元素压入小顶堆，最后 $pop$ 掉大顶堆堆顶元素；</p>
-<blockquote>
-<p>这种情况时，前半段数据数量比后半段多1，那么加入新元素后，两段数据数量应该相同，也就是需要往后半段添加元素。先将新元素和前半段元素比较，然后将前半段元素中最大的放到后半段来。</p>
-</blockquote>
-</li>
-</ul>
-<p>经过上面的压入操作，保证了两个堆顶元素就是处在中间位置的元素，如果当前总数为奇数个，中位数即为大顶堆的堆顶元素，如果当前总数为偶数个，中位数即为两个堆顶元素的平均数。</p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">MedianFinder</span> <span class="token punctuation">&#123;</span>
-    priority_queue<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">,</span> less<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> bigger<span class="token punctuation">;</span> <span class="token comment">// 大顶堆</span>
-    priority_queue<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">,</span> greater<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> lesser<span class="token punctuation">;</span> <span class="token comment">// 小顶堆</span>
-    <span class="token keyword">int</span> cnt <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>	<span class="token comment">// 数据总量</span>
+                <h3 id="1049-最后一块石头的重量-II"><a href="#1049-最后一块石头的重量-II" class="headerlink" title="1049. 最后一块石头的重量 II"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/last-stone-weight-ii/">1049. 最后一块石头的重量 II</a></h3><p><img src="https://gitee.com/fduwangjian/imagebed/raw/master/images/2022/202204241125236.png" alt="题目描述"></p>
+<p>乍看毫无思路，但仔细想想，这就是相当于把石头分成两堆，两堆相互碰撞，最后剩下的重量最小。那么就可以转化为<strong>01背包问题</strong>。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
-    <span class="token comment">/** initialize your data structure here. */</span>
-    <span class="token function">MedianFinder</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
-    
-    <span class="token keyword">void</span> <span class="token function">addNum</span><span class="token punctuation">(</span><span class="token keyword">int</span> num<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>cnt <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            lesser<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            bigger<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>lesser<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            lesser<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-            bigger<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            lesser<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>bigger<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            bigger<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> <span class="token function">lastStoneWeightII</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> stones<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> n <span class="token operator">=</span> stones<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token function">accumulate</span><span class="token punctuation">(</span>stones<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> stones<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> tgt <span class="token operator">=</span> sum <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">dp</span><span class="token punctuation">(</span>tgt <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// dp[i]表示容量（可容纳的重量）为i的背包最多可以装下重量为dp[i]的石头</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>   <span class="token comment">// 正序遍历物品</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> tgt<span class="token punctuation">;</span> j <span class="token operator">>=</span> stones<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span> j<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>    <span class="token comment">// 倒序遍历背包</span>
+                dp<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> dp<span class="token punctuation">[</span>j <span class="token operator">-</span> stones<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">+</span> stones<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
         <span class="token punctuation">&#125;</span>
-        cnt<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> sum <span class="token operator">-</span> dp<span class="token punctuation">[</span>tgt<span class="token punctuation">]</span> <span class="token operator">-</span> dp<span class="token punctuation">[</span>tgt<span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-    
-    <span class="token keyword">double</span> <span class="token function">findMedian</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">double</span> ret <span class="token operator">=</span> <span class="token number">0.0</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>cnt <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            ret <span class="token operator">=</span> bigger<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-            ret <span class="token operator">=</span> <span class="token punctuation">(</span>bigger<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> lesser<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2.0</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">return</span> ret<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
@@ -581,7 +564,7 @@ MathJax.Hub.Queue(function() {
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://lafiteee.github.io/2022/04/21/test2/">http://lafiteee.github.io/2022/04/21/test2/</a>
+                    <a href="http://lafiteee.github.io/2022/04/24/01-bei-bao-wen-ti/">http://lafiteee.github.io/2022/04/24/01-bei-bao-wen-ti/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -618,7 +601,11 @@ MathJax.Hub.Queue(function() {
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-dp/">
+                                    <span class="chip bg-color">动态规划, dp</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -661,7 +648,7 @@ MathJax.Hub.Queue(function() {
         repo: 'lafiteee.github.io',
         owner: 'lafiteee',
         admin: "lafiteee",
-        id: '2022-04-21T17-22-15',
+        id: '2022-04-24T11-24-02',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -691,9 +678,10 @@ MathJax.Hub.Queue(function() {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/04/24/01-bei-bao-wen-ti/">
                     <div class="card-image">
@@ -711,9 +699,9 @@ MathJax.Hub.Queue(function() {
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -726,6 +714,7 @@ MathJax.Hub.Queue(function() {
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -744,13 +733,13 @@ MathJax.Hub.Queue(function() {
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/04/21/test-article/">
+                <a href="/2022/04/21/test2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="test2">
                         
-                        <span class="card-title"></span>
+                        <span class="card-title">test2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
