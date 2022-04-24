@@ -518,7 +518,7 @@ MathJax.Hub.Queue(function() {
             <div id="articleContent">
                 <meta name="referrer" content="no-referrer" />
 
-<h2 id="排序算法的稳定性"><a href="#排序算法的稳定性" class="headerlink" title="排序算法的稳定性"></a>排序算法的稳定性</h2><h4 id="稳定的排序："><a href="#稳定的排序：" class="headerlink" title="稳定的排序："></a>稳定的排序：</h4><ul>
+<h2 id="排序算法的稳定性"><a href="#排序算法的稳定性" class="headerlink" title="排序算法的稳定性"></a>排序算法的稳定性</h2><h3 id="稳定的排序："><a href="#稳定的排序：" class="headerlink" title="稳定的排序："></a>稳定的排序：</h3><ul>
 <li>冒泡排序</li>
 <li>插入排序</li>
 <li>归并排序</li>
@@ -527,7 +527,7 @@ MathJax.Hub.Queue(function() {
 <blockquote>
 <p>上述基于比较的排序算法在遇到相同的值时不做交换，这样保证了稳定性；</p>
 </blockquote>
-<h4 id="不稳定排序："><a href="#不稳定排序：" class="headerlink" title="不稳定排序："></a>不稳定排序：</h4><ul>
+<h3 id="不稳定排序："><a href="#不稳定排序：" class="headerlink" title="不稳定排序："></a>不稳定排序：</h3><ul>
 <li>快速排序</li>
 <li>堆排序</li>
 </ul>
@@ -547,7 +547,7 @@ MathJax.Hub.Queue(function() {
 
 
 
-<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>对元素 $i$ ，在前面的 $i-1$ 个位置中找到它应该插入的位置。向前寻找位置的过程中向后移动元素，腾出空间。插入排序是一种稳定的排序算法。</p>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>对元素 $i$ ，在前面的 $i-1$ 个位置中找到它应该插入的位置。向前寻找位置的过程中向后移动元素，腾出空间。插入排序是一种稳定的排序算法。</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token function">insertSort</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">int</span> n <span class="token operator">=</span> nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -561,24 +561,24 @@ MathJax.Hub.Queue(function() {
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><blockquote>
+<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><blockquote>
 <p>当序列顺序完全颠倒时具有最差的时间复杂度 $O(n^2)$</p>
 <p>当序列完全有序时具有最优时间复杂度 $O(n)$ </p>
 </blockquote>
 <h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><blockquote>
 <p>堆排序是一种基于比较的排序算法，其底层数据结构为二叉堆。堆排序和选择排序相似，选择排序中我们每次选择最小值放在数组的头部，然后对剩余的元素重复这样的过程。堆排序也是如此，以大顶堆为例，我们每次选择堆顶元素，将其与数组的末尾元素交换，这样最大值就放在了数组的尾部，此时堆结构被破坏，需要重新调整使其满足堆的结构。然后对剩余的前 n - 1 个元素重复这样的过程。</p>
 </blockquote>
-<h4 id="为什么堆使用数组来表示？"><a href="#为什么堆使用数组来表示？" class="headerlink" title="为什么堆使用数组来表示？"></a>为什么堆使用数组来表示？</h4><blockquote>
+<h3 id="为什么堆使用数组来表示？"><a href="#为什么堆使用数组来表示？" class="headerlink" title="为什么堆使用数组来表示？"></a>为什么堆使用数组来表示？</h3><blockquote>
 <p>因为堆的数据结构是完全二叉树，很容易用数组来表示，并且空间效率很高。如果父节点的下标是 $i$ ，那么它的孩子节点下标分别是 $2<em>i+1$ 和 $2</em>i+2$ 。(下标从0开始)</p>
 </blockquote>
-<h4 id="堆排序的过程："><a href="#堆排序的过程：" class="headerlink" title="堆排序的过程："></a>堆排序的过程：</h4><blockquote>
+<h3 id="堆排序的过程："><a href="#堆排序的过程：" class="headerlink" title="堆排序的过程："></a>堆排序的过程：</h3><blockquote>
 <ol>
 <li>根据输入数据建立一个大顶堆；</li>
 <li>建好堆以后，堆顶元素即为最大值。将堆顶元素与数组末尾元素互换，然后将堆的 $size-1$  ，然后调整堆的结构，也就是对堆顶元素进行 $heapify$ ；</li>
 <li>重复 step2 直到堆的 $size &#x3D;&#x3D; 1$ 。</li>
 </ol>
 </blockquote>
-<h4 id="C-代码实现"><a href="#C-代码实现" class="headerlink" title="C++代码实现"></a>C++代码实现</h4><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// 把以下标i为根的子树堆化，n是堆的大小</span>
+<h3 id="C-代码实现"><a href="#C-代码实现" class="headerlink" title="C++代码实现"></a>C++代码实现</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// 把以下标i为根的子树堆化，n是堆的大小</span>
 <span class="token keyword">void</span> <span class="token function">heapify</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">int</span> largest <span class="token operator">=</span> i<span class="token punctuation">;</span>	<span class="token comment">// 初始化largest为根的下标</span>
     <span class="token keyword">int</span> left <span class="token operator">=</span> i <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>	<span class="token comment">// 左孩子</span>
@@ -612,11 +612,11 @@ MathJax.Hub.Queue(function() {
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="Note："><a href="#Note：" class="headerlink" title="Note："></a>Note：</h4><blockquote>
+<h3 id="Note："><a href="#Note：" class="headerlink" title="Note："></a>Note：</h3><blockquote>
 <p>堆排序是一种原地排序算法，空间复杂度为 $O(1)$ 。</p>
 <p>堆排序的经典实现是<strong>不稳定</strong>的，但是也可以有稳定的实现。</p>
 </blockquote>
-<h4 id="时间复杂度-1"><a href="#时间复杂度-1" class="headerlink" title="时间复杂度"></a>时间复杂度</h4><blockquote>
+<h3 id="时间复杂度-1"><a href="#时间复杂度-1" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><blockquote>
 <p> $heapify$ 的时间复杂度为 $O(logn)$ ，建堆和调整堆的大小的过程的时间复杂度为 $O(n)$ ，总体时间复杂度为 $O(nlogn)$ 。</p>
 </blockquote>
 <h3 id="C-优先队列"><a href="#C-优先队列" class="headerlink" title="C++优先队列"></a>C++优先队列</h3><p><code>priority_queue&lt;int, vector&lt;int&gt;, less&lt;int&gt;&gt; q;</code></p>
