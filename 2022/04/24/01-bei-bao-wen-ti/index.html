@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="01背包问题, Lafiteee拉菲的博客">
-    <meta name="description" content="许多看似无头绪的问题可以转化为01背包问题...">
+    <meta name="keywords" content="你的背包，让我走得好缓慢~背包问题（1）, Lafiteee拉菲的博客">
+    <meta name="description" content="许多看似无头绪的问题可以转化为背包问题...">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +19,7 @@
 
     
 
-    <title>01背包问题 | Lafiteee拉菲的博客</title>
+    <title>你的背包，让我走得好缓慢~背包问题（1） | Lafiteee拉菲的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -309,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">01背包问题</h1>
+                    <h1 class="description center-align post-title">你的背包，让我走得好缓慢~背包问题（1）</h1>
                 </div>
             </div>
         </div>
@@ -486,7 +486,7 @@ MathJax.Hub.Queue(function() {
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    513
+                    517
                 </div>
                 
 
@@ -537,7 +537,11 @@ MathJax.Hub.Queue(function() {
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="494-目标和"><a href="#494-目标和" class="headerlink" title="494. 目标和"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/target-sum/">494. 目标和</a></h2><p><img src="https://gitee.com/fduwangjian/imagebed/raw/master/images/2022/202204241429985.png" alt="题目描述"></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题意就是要将数组中的数字分成两部分：$positive$ 和 $negtive$ ，使得 $positive-negtive&#x3D;target$ 。所以我们可以得到如下的推导：<br>$$<br>\because \  positive+negtive&#x3D;sum\<br>\therefore \ positive-(sum-positive)&#x3D;target \<br>\therefore \ 2 \times positive &#x3D; target+sum<br>\ \therefore \ positive&#x3D;(target+sum)\div 2<br>$$<br>为了满足上面第二个式子成立，需要保证 $(target+sum)\mod 2 &#x3D;&#x3D; 0$ ，如果不满足，那么方案数为 0。另外如果 $|target|&gt;sum$ ，也不会有答案，方案数为 0。</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>题意就是要将数组中的数字分成两部分：$positive$ 和 $negtive$ ，使得 $positive-negtive&#x3D;target$ 。所以我们可以得到如下的推导：<br>$$<br>\because \  positive+negtive&#x3D;sum\ \tag1<br>$$</p>
+<p>$$<br>\therefore \ positive-(sum-positive)&#x3D;target \ \tag2<br>$$</p>
+<p>$$<br>\therefore \ 2 \times positive &#x3D; target+sum \tag3<br>$$</p>
+<p>$$<br>\therefore \ positive&#x3D;(target+sum)\div 2 \tag4<br>$$</p>
+<p>为了满足上面第二个式子成立，需要保证 $(target+sum)\mod 2 &#x3D;&#x3D; 0$ ，如果不满足，那么方案数为 0。另外如果 $|target|&gt;sum$ ，也不会有答案，方案数为 0。</p>
 <p>到这里，问题就转化为 01背包问题，<strong>给定 $nums$ 数组和一个容量为 $positive$ 的背包，求出能装满背包的方案数。</strong>令 $dp[j]$ 表示装满容量为 $j$ 的背包的方案数，那么得到递推公式：$dp[j]\ +&#x3D;\ dp[j-nums[i]]$ 。代码如下：</p>
 <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
@@ -766,15 +770,15 @@ dp[i]表示和为i的方案数
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="01背包问题">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="你的背包，让我走得好缓慢~背包问题（1）">
                         
-                        <span class="card-title">01背包问题</span>
+                        <span class="card-title">你的背包，让我走得好缓慢~背包问题（1）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            许多看似无头绪的问题可以转化为01背包问题...
+                            许多看似无头绪的问题可以转化为背包问题...
                         
                     </div>
                     <div class="publish-info">
