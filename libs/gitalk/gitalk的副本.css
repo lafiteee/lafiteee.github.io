@@ -888,13 +888,13 @@
   border-color: #81a6ed;
 }
 .gt-container .gt-error {
-  text-align: left;
+  text-align: center;
   margin: 0.625em;
   color: #ff3860;
 }
 .gt-container .gt-initing {
   padding: 1.25em 0;
-  text-align: left;
+  text-align: center;
 }
 .gt-container .gt-initing-text {
   margin: 0.625em auto;
@@ -902,7 +902,7 @@
 }
 .gt-container .gt-no-init {
   padding: 1.25em 0;
-  text-align: left;
+  text-align: center;
 }
 .gt-container .gt-link {
   border-bottom: 1px dotted #6190e8;
@@ -1107,11 +1107,11 @@
   padding-top: 1.25em;
 }
 .gt-container .gt-comments-null {
-  text-align: left;
+  text-align: center;
 }
 .gt-container .gt-comments-controls {
   margin: 1.25em 0;
-  text-align: left;
+  text-align: center;
 }
 .gt-container .gt-comment {
   position: relative;
