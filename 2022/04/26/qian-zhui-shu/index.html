@@ -24,7 +24,7 @@
 <meta property="og:description" content="前缀树(字典树)及Leetcode相关题目 前缀树的实现（C++） class Trie{ private:     vector&lt;Trie*&gt; child;     bool isEnd; public:     Trie(): child(26), isEnd(false) {}          void insert(string &amp;word) {         T">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-26T14:09:17.000Z">
-<meta property="article:modified_time" content="2022-04-26T14:11:05.303Z">
+<meta property="article:modified_time" content="2022-04-26T14:15:08.473Z">
 <meta property="article:author" content="Lafiteee拉菲">
 <meta property="article:tag" content="前缀树">
 <meta name="twitter:card" content="summary_large_image">
@@ -331,7 +331,7 @@ mjx-container[display="true"] + br {
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.2k 字
+      995 字
     </span>
   
 
@@ -340,7 +340,7 @@ mjx-container[display="true"] + br {
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10 分钟
+      9 分钟
     </span>
   
 
@@ -389,46 +389,46 @@ mjx-container[display="true"] + br {
               <meta name="referrer" content="no-referrer">
 <h1 id="前缀树字典树及leetcode相关题目">前缀树(字典树)及Leetcode相关题目</h1>
 <h2 id="前缀树的实现c">前缀树的实现（C++）</h2>
-<div class="code-wrapper"><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">class Trie{
-private:
-    vector&lt;Trie*&gt; child;
-    bool isEnd;
-public:
-    Trie(): child(26), isEnd(false) {}
+<div class="code-wrapper"><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Trie</span><span class="token punctuation">{</span>
+<span class="token keyword">private</span><span class="token operator">:</span>
+    vector<span class="token operator">&lt;</span>Trie<span class="token operator">*</span><span class="token operator">&gt;</span> child<span class="token punctuation">;</span>
+    <span class="token keyword">bool</span> isEnd<span class="token punctuation">;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">Trie</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token function">child</span><span class="token punctuation">(</span><span class="token number">26</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">isEnd</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
     
-    void insert(string &amp;word) {
-        Trie* node = this;
-        for (auto ch : word) {
-            if (node-&gt;child[ch-'a'] == nullptr) {
-                node-&gt;child[ch-'a'] = new Trie();
-            }
-            node = node-&gt;child[ch-'a'];
-        }
-        node-&gt;isEnd = true;
-    }
-    // 检索单词word是否在前缀树中
-    bool search(string &amp;word) {
-        Trie* node = this;
-        for (auto ch : word) {
-            if (node-&gt;child[ch-'a'] == nullptr) {
-                return false;
-            }
-             node = node-&gt;child[ch-'a'];
-        }
-        return node-&gt;isEnd;
-    }
-    // 给定一个前缀prefix，查询前缀树中是否有单词以prefix为开头
-    bool startsWith(string &amp;prefix) {
-		Trie* node = this;
-        for (auto ch : prefix) {
-            if (node-&gt;child[ch-'a'] == nullptr) {
-                return false;
-            }
-            node = node-&gt;child[ch-'a'];
-        }
-        return true;
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
+    <span class="token keyword">void</span> <span class="token function">insert</span><span class="token punctuation">(</span>string <span class="token operator">&amp;</span>word<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Trie<span class="token operator">*</span> node <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> ch <span class="token operator">:</span> word<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token operator">-&gt;</span>child<span class="token punctuation">[</span>ch<span class="token operator">-</span><span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                node<span class="token operator">-&gt;</span>child<span class="token punctuation">[</span>ch<span class="token operator">-</span><span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Trie</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            node <span class="token operator">=</span> node<span class="token operator">-&gt;</span>child<span class="token punctuation">[</span>ch<span class="token operator">-</span><span class="token char">'a'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        node<span class="token operator">-&gt;</span>isEnd <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 检索单词word是否在前缀树中</span>
+    <span class="token keyword">bool</span> <span class="token function">search</span><span class="token punctuation">(</span>string <span class="token operator">&amp;</span>word<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Trie<span class="token operator">*</span> node <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> ch <span class="token operator">:</span> word<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token operator">-&gt;</span>child<span class="token punctuation">[</span>ch<span class="token operator">-</span><span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+             node <span class="token operator">=</span> node<span class="token operator">-&gt;</span>child<span class="token punctuation">[</span>ch<span class="token operator">-</span><span class="token char">'a'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> node<span class="token operator">-&gt;</span>isEnd<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 给定一个前缀prefix，查询前缀树中是否有单词以prefix为开头</span>
+    <span class="token keyword">bool</span> <span class="token function">startsWith</span><span class="token punctuation">(</span>string <span class="token operator">&amp;</span>prefix<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		Trie<span class="token operator">*</span> node <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> ch <span class="token operator">:</span> prefix<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>node<span class="token operator">-&gt;</span>child<span class="token punctuation">[</span>ch<span class="token operator">-</span><span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            node <span class="token operator">=</span> node<span class="token operator">-&gt;</span>child<span class="token punctuation">[</span>ch<span class="token operator">-</span><span class="token char">'a'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>
 <h2 id="leetcode相关题目待续">Leetcode相关题目（待续）：</h2>
 <h3 id="实现前缀树"><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-trie-prefix-tree/">208.实现前缀树</a></h3>
 <h3 id="替换单词"><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/replace-words/">648.替换单词</a></h3>
