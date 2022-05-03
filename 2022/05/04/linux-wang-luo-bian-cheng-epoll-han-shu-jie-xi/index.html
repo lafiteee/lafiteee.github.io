@@ -9,7 +9,7 @@
     
     <title>
         
-            二分查找 |
+            【Linux网络编程】epoll函数解析 |
         
         Lafiteee&#39;s Blog
     </title>
@@ -294,7 +294,7 @@ mjx-container[display="true"] + br {
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">二分查找</span>
+            <span class="title-hover-animation">【Linux网络编程】epoll函数解析</span>
         </div>
 
         
@@ -313,8 +313,8 @@ mjx-container[display="true"] + br {
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-04-30 10:16:08</span>
-        <span class="mobile">2022-04-30 10:16</span>
+        <span class="pc">2022-05-04 00:32:09</span>
+        <span class="mobile">2022-05-04 00:32</span>
     </span>
     
         <span class="article-categories article-meta-item">
@@ -322,7 +322,7 @@ mjx-container[display="true"] + br {
             <ul>
                 
                     <li>
-                        <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a>&nbsp;
+                        <a href="/categories/Linux%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">Linux网络编程</a>&nbsp;
                     </li>
                 
             </ul>
@@ -334,7 +334,7 @@ mjx-container[display="true"] + br {
             <ul>
                 
                     <li>
-                        <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">二分查找</a>&nbsp;
+                        <a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">网络编程</a>&nbsp;
                     </li>
                 
             </ul>
@@ -344,7 +344,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>485 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.6k 字</span>
         </span>
     
     
@@ -362,17 +362,121 @@ mjx-container[display="true"] + br {
 
         <div class="article-content markdown-body">
             <meta name="referrer" content="no-referrer">
-<h3 id="查找某个值target">查找某个值target</h3>
-<p>这种情况适用查找区间为左闭右闭区间<code>[low, high]</code>，循环条件是<code>while (low &lt;= high)</code>，循环终止时为<code>[low + 1, high]</code>空区间，意味着数组中没有找到target，返回-1.</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">binarySearch</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>{</span><br><span class="line">    <span class="type">int</span> low = <span class="number">0</span>, high = nums.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (low &lt;= high) {	<span class="comment">//循环条件带等号</span></span><br><span class="line">        <span class="type">int</span> mid = low + (high - low) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums[mid] == target) {</span><br><span class="line">            <span class="keyword">return</span> mid;</span><br><span class="line">        } <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; target) {</span><br><span class="line">            high = mid - <span class="number">1</span>;</span><br><span class="line">        } <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) {</span><br><span class="line">            low = mid + <span class="number">1</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-<h3 id="查找值为target的区间下界">查找值为target的区间下界</h3>
-<p>在<code>[1,2,2,2,3]</code>中查找第一个大于或等于target（以2为例）的位置，即第一次出现2的位置，也就是下标为1的位置。</p>
-<p>使用左闭右开区间<code>[low, high)</code>，循环条件为<code>while(low &lt; high)</code>，循环终止时为<code>[low, high)</code>空区间，意味着第一次出现<code>target</code>的位置为<code>low</code>，或者数组中没有<code>target</code>，<code>target</code>应该插入的位置为<code>low</code>。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">lower_bound</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>{</span><br><span class="line">    <span class="type">int</span> low = <span class="number">0</span>, high = nums.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">while</span> (low &lt; high) {	<span class="comment">// 循环条件不带等号</span></span><br><span class="line">        <span class="type">int</span> mid = low + (high - low) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums[mid] == target) {	<span class="comment">// 等于target时要缩小右边界，继续寻找左边界</span></span><br><span class="line">            high = mid;</span><br><span class="line">        } <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; target) {</span><br><span class="line">			high = mid;</span><br><span class="line">        } <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) {</span><br><span class="line">            low = mid + <span class="number">1</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> low;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-<h2 id="查找值为target的区间上界">查找值为target的区间上界</h2>
-<p>在<code>[1,2,2,2,3]</code>中查找<strong>第一个大于target(以2为例)的位置</strong>，也就是下标为4的位置。</p>
-<p>使用左闭右开区间<code>[low, high)</code>，循环条件为<code>while(low &lt; high)</code>，循环终止时<code>low == high</code>，为<code>[low, low)</code>空区间，意味着第一个大于<code>target</code>的位置为<code>low</code>，或者数组中没有<code>target</code>，<code>target</code>应该插入的位置为<code>low</code>。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">upper_bound</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> target)</span> </span>{</span><br><span class="line">    <span class="type">int</span> low = <span class="number">0</span>, high = nums.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">while</span> (low &lt; high) {</span><br><span class="line">        <span class="type">int</span> mid = low + (high - low) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums[mid] == target) {	<span class="comment">// mid == target的时候要缩小左边界，继续寻找右边界</span></span><br><span class="line">            low = mid + <span class="number">1</span>;</span><br><span class="line">        } <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) {</span><br><span class="line">            low = mid + <span class="number">1</span>;</span><br><span class="line">        } <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &gt; target) {</span><br><span class="line">            high = mid;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> left;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>本文参考社长的 TinyWebServer <a class="link" target="_blank" rel="noopener" href="https://github.com/qinguoyi/TinyWebServer">庖丁解牛<i class="fas fa-external-link-alt"></i></a></p>
+</blockquote>
+<h2 id="epoll-常用api">epoll 常用API</h2>
+<h3 id="epoll_create-函数">epoll_create 函数</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/epoll.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">epoll_create</span><span class="params">(<span class="type">int</span> size)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>创建一个指示 epoll 内核事件表的文件描述符，该描述符将用作其他 epoll 系统调用的第一个参数，此处的 size 参数不起作用。</p>
+<h3 id="epoll_ctl-函数">epoll_ctl 函数</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/epoll.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">epoll_ctl</span><span class="params">(<span class="type">int</span> epfd, <span class="type">int</span> op, <span class="type">int</span> fd, <span class="keyword">struct</span> epoll_event *event)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>该函数用于操作内核事件表监控的文件描述符上的事件：注册、修改、删除：</p>
+<ul>
+<li><code>epfd</code>：为 epoll_create 的句柄；</li>
+<li><code>op</code>：表示动作，用 3 个宏来表示：
+<ul>
+<li><code>EPOLL_CTL_ADD</code>：注册新的 fd 到 epfd；</li>
+<li><code>EPOLL_CTL_MOD</code>：修改已经注册的 fd 的监听事件；</li>
+<li><code>EPOLL_CTL_DEL</code>：从 epfd 删除一个 fd；</li>
+</ul></li>
+<li><code>event</code>：告诉内核需要监听的事件。</li>
+</ul>
+<p>其中，<code>event</code> 是 <code>epoll_event</code> 结构体指针类型，表示内核监听的事件，具体定义如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">epoll_event</span> {</span><br><span class="line">    <span class="type">__uint32_t</span> events;</span><br><span class="line">    <span class="type">epoll_data_t</span> data;</span><br><span class="line">};</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>events</code> 描述事件类型，其中 epoll 事件类型有以下几种：
+<ul>
+<li><code>EPOLLIN</code>：表示对应的文件描述符可读（包括对端SOCKET正常关闭）</li>
+<li><code>EPOLLOUT</code>：表示对应的文件描述符可写；</li>
+<li><code>EPOLLPRI</code>：表示对应的文件描述符有紧急的数据可读（这里应该表示有带外数据到来）</li>
+<li><code>EPOLLERR</code>：表示对应的文件描述符发生错误；</li>
+<li><code>EPOLLHUP</code>：表示对应的文件描述符被挂断；</li>
+<li><code>EPOLLLET</code>：将 EPOLL 设置为边缘触发（ET）模式；</li>
+<li><code>EPOLLONESHOT</code>：只监听一次事件，当监听完这次事件之后，如果还需要继续监听这个 socket 的话，需要再次把这个 socket 加入到 EPOLL 队列中。</li>
+</ul></li>
+</ul>
+<h3 id="epoll_wait-函数">epoll_wait 函数</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/epoll.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">epoll_wait</span><span class="params">(<span class="type">int</span> epfd, <span class="keyword">struct</span> epoll_event *events, <span class="type">int</span> maxevents, <span class="type">int</span> timeout)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>该函数用于等待所监控的文件描述符上有事件的产生，返回就绪的文件描述符的个数。</p>
+<ul>
+<li><code>events</code>：用来存储内核得到的事件的集合；</li>
+<li><code>maxevents</code>：告知内核这个 events 有多大，这个值不能大于创建 epoll_create() 时的大小；</li>
+<li><code>timeout</code>：超时时间：
+<ul>
+<li><code>-1</code>：阻塞；</li>
+<li><code>0</code>：立即返回，非阻塞；</li>
+<li><code>&gt;0</code>：指定毫秒数；</li>
+</ul></li>
+<li>返回值：成功返回有多少文件描述符就绪，时间到时返回 0，出错时返回-1。</li>
+</ul>
+<h3 id="selectpollepoll-的区别">select/poll/epoll 的区别</h3>
+<ul>
+<li><p>调用函数</p>
+<ul>
+<li>select 和 poll 都是一个函数，epoll 是一组函数；</li>
+</ul></li>
+<li><p>文件描述符数量</p>
+<ul>
+<li>select 使用线性表保存文件描述符的集合，文件描述符有上限，一般是 1024，但可以修改源码，重新编译内核，不推荐；</li>
+<li>poll 是使用链表存储文件描述符的集合，突破了文件描述符的上限；</li>
+<li>epoll 使用红黑树存储文件描述符的集合，突破了文件描述符的上限（通过命令 ulimit -n number 修改，仅对当前终端有效）；</li>
+</ul></li>
+<li><p>将文件描述符从用户传给内核：</p>
+<ul>
+<li>select 和 poll 将所有文件描述符拷贝到内核态，每次调用都需要拷贝；</li>
+<li>epoll 通过 epoll_create 建立一棵红黑树，通过 epoll_ctl 将要监听的文件描述符注册到红黑树上，文件描述符都在内核态；</li>
+</ul></li>
+<li><p>内核判断就绪的文件描述符：</p>
+<ul>
+<li>select 和 poll 通过遍历文件描述符集合，判断哪个文件描述符上有事件发生；</li>
+<li>epoll_create 时，内核除了会建立一个红黑树来存储以后 epoll_ctl 传来的 fd 外，还会再建立一个 list 链表，用于存储准备就绪的事件。当 epoll_wait 调用时，仅仅观察这个 list 链表上有没有数据即可；</li>
+<li>epoll 是根据每个 fd 上面的回调函数（中断函数）判断，只有发生了时间的 socket 才会主动的去调用 callback 函数，其他空闲状态的 socket 则不会。若是就绪事件，则插入 list；</li>
+</ul></li>
+<li><p>应用程序索引就绪文件描述符：</p>
+<ul>
+<li>select/epoll 只返回发生了事件的文件描述符的个数，若想要知道哪些文件描述符发生了事件，需要再次遍历；</li>
+<li>epoll 返回的是发生了事件的个数和结构体数组，结构体包含 socket 的信息，因此直接处理返回的数组即可；</li>
+</ul></li>
+<li><p>工作模式：</p>
+<ul>
+<li>select/poll 都只能工作在低效的 LT 模式下；</li>
+<li>epoll 则可以工作在高效的 ET 模式，并且 epoll 还支持 EPOLLONESHOT 事件，可以进一步减少可读、可写和异常事件被触发的次数；</li>
+</ul>
+<blockquote>
+<p>其实 ET 和 LT 哪个高效也是针对不同的任务而言。</p>
+</blockquote></li>
+<li><p>应用场景：</p>
+<ul>
+<li>如果所有的 fd 都是活跃连接，epoll 需要建立红黑树和链表，效率反而不高，不如 select/epoll；</li>
+<li>如果监测的 fd 数目较小，且各个 fd 都比较活跃，建议使用 select/poll；</li>
+<li>如果监测的 fd 数目非常大，并且单位时间内只有其中一小部分 fd 处于就绪状态，这个时候使用 epoll 能够明显提升性能。</li>
+</ul></li>
+</ul>
+<h3 id="etltepolloneshot">ET、LT、EPOLLONESHOT</h3>
+<ul>
+<li><p>LT 水平触发模式</p>
+<ul>
+<li>epoll_wait 检测到文件描述符有事件发生，则将其通知给应用程序，应用程序可以不立即处理该事件；</li>
+<li>当下一次调用 epoll_wait 时，epoll_wait 还会再次向应用程序报告此事件，直至被处理。</li>
+</ul>
+<blockquote>
+<p>Note：</p>
+<p><strong>一个事件只要有，就会一直触发。</strong></p>
+<p>socket 上只要有未读完的数据，就会一直产生 EPOLLIN 事件。所以读完数据要移除事件，避免一直触发。</p>
+</blockquote></li>
+<li><p>ET 边缘触发模式</p>
+<ul>
+<li>epoll_wait 检测到文件描述符有事件发生，则将其通知给应用程序，应用程序必须立即处理该事件；</li>
+<li>必须要一次性将数据读取完，使用非阻塞 I/O，读取到出现 eagain。</li>
+</ul>
+<blockquote>
+<p>Note：</p>
+<p><strong>只有一个事件从无到有，才会触发。</strong></p>
+<p>socket 上每新来一次数据就会触发一次，如果某一次触发后，未将 socket 上的数据全部读完，也不会再次触发，除非再来一次数据。<em>所以必须要一次性读完所有数据</em>。如果未读完，需要再次将事件注册，</p>
+<p>ET 模式必须配合非阻塞 I/O 实现，因为 ET 模式会一次性读取完所有的数据，如果是阻塞 I/O 的话，会导致线程阻塞，影响重新调用 epoll_wait 来监听其他事件。</p>
+</blockquote></li>
+</ul>
 
         </div>
 
@@ -380,11 +484,11 @@ mjx-container[display="true"] + br {
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>本文标题：二分查找</li>
+        <li>本文标题：【Linux网络编程】epoll函数解析</li>
         <li>本文作者：Lafiteee</li>
-        <li>创建时间：2022-04-30 10:16:08</li>
+        <li>创建时间：2022-05-04 00:32:09</li>
         <li>
-            本文链接：https://lafiteee.github.io/2022/04/30/er-fen-cha-zhao/
+            本文链接：https://lafiteee.github.io/2022/05/04/linux-wang-luo-bian-cheng-epoll-han-shu-jie-xi/
         </li>
         <li>
             版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -399,7 +503,7 @@ mjx-container[display="true"] + br {
             <ul class="post-tags-box">
                 
                     <li class="tag-item">
-                        <a href="/tags/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">#二分查找</a>&nbsp;
+                        <a href="/tags/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">#网络编程</a>&nbsp;
                     </li>
                 
             </ul>
@@ -408,29 +512,14 @@ mjx-container[display="true"] + br {
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2022/04/30/leetcode-5.zui-chang-hui-wen-chuan/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">LeetCode5.最长回文串</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2022/04/30/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu/"
+                           href="/2022/04/30/leetcode-5.zui-chang-hui-wen-chuan/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">【位运算】剑指offer56.数组中数字出现的次数</span>
+                                <span class="post-nav-title-item">LeetCode5.最长回文串</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -612,7 +701,7 @@ mjx-container[display="true"] + br {
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E6%9F%90%E4%B8%AA%E5%80%BCtarget"><span class="nav-number">1.</span> <span class="nav-text">查找某个值target</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%80%BC%E4%B8%BAtarget%E7%9A%84%E5%8C%BA%E9%97%B4%E4%B8%8B%E7%95%8C"><span class="nav-number">2.</span> <span class="nav-text">查找值为target的区间下界</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E6%89%BE%E5%80%BC%E4%B8%BAtarget%E7%9A%84%E5%8C%BA%E9%97%B4%E4%B8%8A%E7%95%8C"><span class="nav-number"></span> <span class="nav-text">查找值为target的区间上界</span></a>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#epoll-%E5%B8%B8%E7%94%A8api"><span class="nav-number">1.</span> <span class="nav-text">epoll 常用API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#epoll_create-%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.</span> <span class="nav-text">epoll_create 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#epoll_ctl-%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">epoll_ctl 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#epoll_wait-%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.</span> <span class="nav-text">epoll_wait 函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#selectpollepoll-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.4.</span> <span class="nav-text">select&#x2F;poll&#x2F;epoll 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#etltepolloneshot"><span class="nav-number">1.5.</span> <span class="nav-text">ET、LT、EPOLLONESHOT</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>
