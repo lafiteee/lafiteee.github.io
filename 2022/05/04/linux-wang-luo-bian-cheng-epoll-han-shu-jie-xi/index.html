@@ -141,80 +141,19 @@ mjx-container[display="true"] + br {
 
 
 <body>
-.progress-bar-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: $z-index-9;
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
 
-  if (hexo-config('pjax.enable') == true) {
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
 
-    .pjax-progress-bar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 2px;
-      width: 0;
-      background: var(--pjax-progress-bar-color);
-      visibility: hidden;
-      opacity: 0;
-      z-index: $z-index-8;
-      transition-t("width", "0", "0.1", "linear");
-
-
-      &.show {
-        opacity: 1;
-        visibility: visible;
-      }
-    }
-
-
-    .pjax-progress-icon {
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: $z-index-8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 7px 6px 0 0;
-      visibility: hidden;
-      font-size: 1.1rem;
-      color: var(--default-text-color);
-
-      +keep-tablet() {
-        padding: 6px 5px 0 0;
-        font-size: 1rem;
-      }
-
-      &.show {
-        visibility: visible;
-      }
-    }
-
-  }
-
-  if (hexo-config('style.scroll.progress_bar.enable') == true) {
-
-    .scroll-progress-bar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: $scroll-progress-bar-height;
-      visibility: hidden;
-      z-index: $z-index-7;
-      background: var(--primary-color);
-      transition-t("width", "0", "0.1", "linear");
-
-      &.hide {
-        display: none !important;
-      }
-    }
-
-  }
-}
 
 <main class="page-container">
 
@@ -428,10 +367,12 @@ mjx-container[display="true"] + br {
 </blockquote>
 <h2 id="epoll-常用api">epoll 常用API</h2>
 <h3 id="epoll_create-函数">epoll_create 函数</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/epoll.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">epoll_create</span><span class="params">(<span class="type">int</span> size)</span></span>;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/epoll.h&gt;</span></span>
+<span class="token keyword">int</span> <span class="token function">epoll_create</span><span class="token punctuation">(</span><span class="token keyword">int</span> size<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>创建一个指示 epoll 内核事件表的文件描述符，该描述符将用作其他 epoll 系统调用的第一个参数，此处的 size 参数不起作用。</p>
 <h3 id="epoll_ctl-函数">epoll_ctl 函数</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/epoll.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">epoll_ctl</span><span class="params">(<span class="type">int</span> epfd, <span class="type">int</span> op, <span class="type">int</span> fd, <span class="keyword">struct</span> epoll_event *event)</span></span>;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/epoll.h&gt;</span></span>
+<span class="token keyword">int</span> <span class="token function">epoll_ctl</span><span class="token punctuation">(</span><span class="token keyword">int</span> epfd<span class="token punctuation">,</span> <span class="token keyword">int</span> op<span class="token punctuation">,</span> <span class="token keyword">int</span> fd<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">epoll_event</span> <span class="token operator">*</span>event<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>该函数用于操作内核事件表监控的文件描述符上的事件：注册、修改、删除：</p>
 <ul>
 <li><code>epfd</code>：为 epoll_create 的句柄；</li>
@@ -444,7 +385,10 @@ mjx-container[display="true"] + br {
 <li><code>event</code>：告诉内核需要监听的事件。</li>
 </ul>
 <p>其中，<code>event</code> 是 <code>epoll_event</code> 结构体指针类型，表示内核监听的事件，具体定义如下：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">epoll_event</span> {</span><br><span class="line">    <span class="type">__uint32_t</span> events;</span><br><span class="line">    <span class="type">epoll_data_t</span> data;</span><br><span class="line">};</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">struct</span> <span class="token class-name">epoll_event</span> <span class="token punctuation">{</span>
+    __uint32_t events<span class="token punctuation">;</span>
+    epoll_data_t data<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><code>events</code> 描述事件类型，其中 epoll 事件类型有以下几种：
 <ul>
@@ -458,7 +402,8 @@ mjx-container[display="true"] + br {
 </ul></li>
 </ul>
 <h3 id="epoll_wait-函数">epoll_wait 函数</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;sys/epoll.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">epoll_wait</span><span class="params">(<span class="type">int</span> epfd, <span class="keyword">struct</span> epoll_event *events, <span class="type">int</span> maxevents, <span class="type">int</span> timeout)</span></span>;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;sys/epoll.h&gt;</span></span>
+<span class="token keyword">int</span> <span class="token function">epoll_wait</span><span class="token punctuation">(</span><span class="token keyword">int</span> epfd<span class="token punctuation">,</span> <span class="token keyword">struct</span> <span class="token class-name">epoll_event</span> <span class="token operator">*</span>events<span class="token punctuation">,</span> <span class="token keyword">int</span> maxevents<span class="token punctuation">,</span> <span class="token keyword">int</span> timeout<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>该函数用于等待所监控的文件描述符上有事件的产生，返回就绪的文件描述符的个数。</p>
 <ul>
 <li><code>events</code>：用来存储内核得到的事件的集合；</li>

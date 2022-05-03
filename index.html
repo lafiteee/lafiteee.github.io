@@ -139,80 +139,19 @@ mjx-container[display="true"] + br {
 
 
 <body>
-.progress-bar-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: $z-index-9;
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
 
-  if (hexo-config('pjax.enable') == true) {
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
 
-    .pjax-progress-bar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 2px;
-      width: 0;
-      background: var(--pjax-progress-bar-color);
-      visibility: hidden;
-      opacity: 0;
-      z-index: $z-index-8;
-      transition-t("width", "0", "0.1", "linear");
-
-
-      &.show {
-        opacity: 1;
-        visibility: visible;
-      }
-    }
-
-
-    .pjax-progress-icon {
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: $z-index-8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 7px 6px 0 0;
-      visibility: hidden;
-      font-size: 1.1rem;
-      color: var(--default-text-color);
-
-      +keep-tablet() {
-        padding: 6px 5px 0 0;
-        font-size: 1rem;
-      }
-
-      &.show {
-        visibility: visible;
-      }
-    }
-
-  }
-
-  if (hexo-config('style.scroll.progress_bar.enable') == true) {
-
-    .scroll-progress-bar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: $scroll-progress-bar-height;
-      visibility: hidden;
-      z-index: $z-index-7;
-      background: var(--primary-color);
-      transition-t("width", "0", "0.1", "linear");
-
-      &.hide {
-        display: none !important;
-      }
-    }
-
-  }
-}
 
 <main class="page-container">
 
@@ -416,8 +355,9 @@ mjx-container[display="true"] + br {
 
 epoll 常用API
 epoll_create 函数
-12#include &lt;sys/epoll.h&gt;int epoll_create(int size);
-创建一个指示 ep...
+#include &lt;sys/epoll.h&gt;
+int epoll_create(int size);
+创建一个指示 epo...
                     
                 </div>
 
@@ -538,7 +478,7 @@ epoll_create 函数
                         
 查找某个值target
 这种情况适用查找区间为左闭右闭区间[low, high]，循环条件是while (low &lt;= high)，循环终止时为[low + 1, high]空区间，意味着数组中没有找到target，返回-1.
-1234567...
+int bin...
                     
                 </div>
 
@@ -652,7 +592,12 @@ epoll_create 函数
                         
 前缀树(字典树)及Leetcode相关题目
 前缀树的实现（C++）
-12345678910111213141516171819202122232425262728293031323334353637383940class Trie{private:...
+class Trie{
+private:
+    vector&lt;Trie*&gt; child;
+    bool isEnd;
+public:
+    Trie(): ch...
                     
                 </div>
 
@@ -780,7 +725,9 @@ epoll_create 函数
 题目描述
 
 乍看毫无思路，但仔细想想，这就是相当于把石头分成两堆，两堆相互碰撞，最后剩下的重量最小。那么就可以转化为01背包问题。
-123456789101112131415class Solution {p...
+class Solution {
+public:
+    int lastS...
                     
                 </div>
 
