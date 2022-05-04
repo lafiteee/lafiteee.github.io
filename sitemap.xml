@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://lafiteee.github.io/2022/05/04/linux-wang-luo-bian-cheng-sheng-dong-jiang-jie-reactor-mo-shi-yu-proactor-mo-shi/</loc>
+    
+    <lastmod>2022-05-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://lafiteee.github.io/2022/05/04/linux-wang-luo-bian-cheng-epoll-han-shu-jie-xi/</loc>
     
     <lastmod>2022-05-03</lastmod>
