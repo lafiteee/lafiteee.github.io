@@ -356,9 +356,8 @@ mjx-container[display="true"] + br {
 
 epoll 常用API
 epoll_create 函数
-#include &lt;sys/epoll.h&gt;
-int epoll_create(int size);
-创建一个指示 epo...
+12#include &lt;sys/epoll.h&gt;int epoll_create(int size);
+创建一个指示 ep...
                     
                 </div>
 
@@ -479,7 +478,7 @@ int epoll_create(int size);
                         
 查找某个值target
 这种情况适用查找区间为左闭右闭区间[low, high]，循环条件是while (low &lt;= high)，循环终止时为[low + 1, high]空区间，意味着数组中没有找到target，返回-1.
-int bin...
+1234567...
                     
                 </div>
 
@@ -593,12 +592,7 @@ int bin...
                         
 前缀树(字典树)及Leetcode相关题目
 前缀树的实现（C++）
-class Trie{
-private:
-    vector&lt;Trie*&gt; child;
-    bool isEnd;
-public:
-    Trie(): ch...
+12345678910111213141516171819202122232425262728293031323334353637383940class Trie{private:...
                     
                 </div>
 
@@ -726,9 +720,7 @@ public:
 题目描述
 
 乍看毫无思路，但仔细想想，这就是相当于把石头分成两堆，两堆相互碰撞，最后剩下的重量最小。那么就可以转化为01背包问题。
-class Solution {
-public:
-    int lastS...
+123456789101112131415class Solution {p...
                     
                 </div>
 
